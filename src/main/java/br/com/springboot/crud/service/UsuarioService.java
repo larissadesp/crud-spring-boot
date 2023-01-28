@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.springboot.crud.model.Usuario;
@@ -26,8 +28,8 @@ public class UsuarioService {
 		return usuarioRepository.findById(idUsuario);
 	}
 	
-	public List<Usuario> listarTodos() {
-		return usuarioRepository.findAll();
+	public Page<Usuario> listarTodos(Pageable pageable) {
+		return usuarioRepository.findAll(pageable);
 	}
 
 	@Transactional
